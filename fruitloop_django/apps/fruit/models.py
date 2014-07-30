@@ -1,25 +1,28 @@
 from django.contrib.auth.models import User
-from django.contrib.gis.db import models
+from django.db import models
 from django_extensions.db.models import TimeStampedModel
+
 
 class FruitLocation(TimeStampedModel):
 
     FRUIT_CHOICES = (
-        ('cherry', 'Cheery'), 
-        ('apple', 'Apples'), 
-        ('other', 'Other'), 
-        )
+        ('cherry', 'Cheery'),
+        ('apple', 'Apples'),
+        ('other', 'Other'),
+    )
     address = models.CharField(
         max_length=50)
     comment = models.TextField(
         blank=True, null=True)
     fruit_type = models.CharField(
-        choices=FRUIT_CHOICES, 
+        choices=FRUIT_CHOICES,
         max_length=20)
-    location = models.PointField(
-        srid=4326, blank=True, null=True)
-
-    objects = models.GeoManager()
+    latitude = models.DecimalField(
+        max_digits=10, decimal_places=7,
+        blank=True, null=True)
+    longitude = models.DecimalField(
+        max_digits=10, decimal_places=7,
+        blank=True, null=True)
 
     class Meta:
         ordering = ['-modified']
