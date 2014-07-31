@@ -1,12 +1,11 @@
 from django.conf.urls import patterns, include, url
-
 from django.contrib import admin
+
+from fruit.views import FruitLocationListView
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'fruitloop_django.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
+    url(r'^$', FruitLocationListView.as_view(), name='home'),
     url(r'^admin/', include(admin.site.urls)),
 )

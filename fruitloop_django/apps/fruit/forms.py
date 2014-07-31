@@ -3,7 +3,7 @@ from django import forms
 from .models import FruitLocation
 
 
-class FruitForm(forms.ModelForm):
+class FruitLocationForm(forms.ModelForm):
 
     class Meta:
         model = FruitLocation

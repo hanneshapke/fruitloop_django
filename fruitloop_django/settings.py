@@ -41,8 +41,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 3rd party pkgs
-    'django_extensions', 
     'south',
+    'django_extensions', 
+    'bootstrap3',
     # project pkgs
     'fruit',
 )
@@ -55,6 +56,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'fruitloop_django/templates'),
+    )
 
 ROOT_URLCONF = 'fruitloop_django.urls'
 
