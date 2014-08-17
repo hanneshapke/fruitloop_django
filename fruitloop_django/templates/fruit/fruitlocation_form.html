@@ -36,8 +36,8 @@
         bbox.push([{{fruit_location.latitude}}, {{fruit_location.longitude}}]);
     {% endfor %}
     map.fitBounds(bbox);
-    map.setZoom(1);
-    console.log(map.getZoom() - 5);
+    // map.setZoom(1);
+    // console.log(map.getZoom() - 5);
   var autocomplete = new google.maps.places.Autocomplete(
       /** @type {HTMLInputElement} */(document.getElementById('id_address')),
       { types: ['geocode'] });

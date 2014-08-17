@@ -1,7 +1,10 @@
+import sys
+
 from django.contrib.auth.models import User
 from django.db import models
 from django_extensions.db.models import TimeStampedModel
 
+from pygeocoder import Geocoder
 
 class FruitType(TimeStampedModel):
 
@@ -33,6 +36,20 @@ class FruitLocation(TimeStampedModel):
     class Meta:
         ordering = ['-modified']
         verbose_name_plural = "Fruit Locations"
+
+    def save(self, *args, **kwargs):
+        try:
+            # get the geocoding results
+            results = Geocoder.geocode(self.address)
+            # correct the address spelling
+            self.address = results[0].formatted_address.encode('utf-8')
+            self.latitude = results[0].coordinates[0]
+            self.longitude = results[0].coordinates[1]
+        except Exception, e:
+            print "Oops!  Couldn't geocode address because of %s" % sys.exc_info()[0]
+
+        super(FruitLocation, self).save(*args, **kwargs)
+
 
     # Returns the string representation of the model.
     def __unicode__(self):

@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # 3rd party pkgs
     'south',
+    # 'pygeocoder',
     'django_extensions', 
     'bootstrap3',
     # project pkgs
