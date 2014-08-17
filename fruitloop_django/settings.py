@@ -43,7 +43,7 @@ INSTALLED_APPS = (
     # 3rd party pkgs
     'south',
     # 'pygeocoder',
-    'django_extensions', 
+    'django_extensions',
     'bootstrap3',
     # project pkgs
     'fruit',
@@ -60,7 +60,7 @@ MIDDLEWARE_CLASSES = (
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'fruitloop_django/templates'),
-    )
+)
 
 ROOT_URLCONF = 'fruitloop_django.urls'
 
